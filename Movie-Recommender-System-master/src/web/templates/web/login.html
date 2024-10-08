@@ -6,11 +6,12 @@
 
     <div class="row">
         <div class="col-sm-12 col-md-6 col-md-offset-3">
-            <div class="panel panel-primary"> <!-- Changed panel color -->
+            <div class="panel panel-primary shadow-lg"> <!-- Added shadow effect -->
                 <div class="panel-body">
-                    <h3 class="text-center">Log In to Your Account</h3> <!-- Centered heading -->
+                    <h3 class="text-center font-weight-bold">Welcome Back!</h3> <!-- Updated heading text and added bold font -->
+                    <p class="text-center text-muted">Please log in to continue</p> <!-- Added subtext below the heading -->
                     {% if error_message %}
-                        <p class="text-danger"><strong>{{ error_message }}</strong></p> <!-- Changed error text to red -->
+                        <p class="text-danger text-center"><strong>{{ error_message }}</strong></p> <!-- Centered error message -->
                     {% endif %}
                     <form class="form-horizontal" role="form" action="#" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -20,7 +21,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input id="id_username" maxlength="30" name="username" type="text" class="form-control"
-                                       placeholder="Enter your username"> <!-- Added placeholder -->
+                                       placeholder="Enter your username" required autofocus> <!-- Added autofocus and required fields -->
                             </div> 
                         </div>
                         <div class="form-group">
@@ -29,18 +30,28 @@
                             </label>
                             <div class="col-sm-10">
                                 <input id="id_password" maxlength="30" name="password" type="password" class="form-control"
-                                       placeholder="Enter your password"> <!-- Added placeholder -->
+                                       placeholder="Enter your password" required> <!-- Added required field -->
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-primary btn-block">Log In</button> <!-- Changed button text -->
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember"> Remember me <!-- Added remember me checkbox -->
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary btn-block">Log In</button> <!-- Same button style -->
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="panel-footer text-center">
-                    Don't have an account? <a href="{% url 'signup' %}">Click here</a> to sign up. <!-- Changed register text -->
+                    <p class="text-muted">Don't have an account? <a href="{% url 'signup' %}">Sign up now</a></p> <!-- Updated register message styling -->
+                    <p><a href="{% url 'password_reset' %}">Forgot your password?</a></p> <!-- Added forgot password link -->
                 </div>
             </div>
         </div>
